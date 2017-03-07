@@ -1,0 +1,104 @@
+{
+	"version": 8,
+	"name": "3DNederland",
+	"glyphs": "/font/{fontstack}/{range}.pbf",
+	"sources": {
+		"buildings": {
+			"type": "vector",
+			"scheme": "tile",
+			"tiles": [
+				"http://localhost/terreinvlak_3/{z}/{x}/{y}.pbf"
+			]
+		}
+	},	
+	"light": {
+		"anchor":"map",
+		"color": "#fff",
+		"intensity":0.4,
+		"position": [
+			1.5,
+			90,
+			10
+		]
+	},
+	"layers":[
+		{
+			"id":  "background",
+			"type": "background",
+			"paint": {
+				"background-color":"#333333"
+			}
+		},
+		{
+			"id": "terrein_set",
+			"type": "fill",
+			"source": "buildings",
+			"source-layer" : "terreinvlak_3",
+			"maxzoom": 20,
+			"minzoom": 0,
+			"paint": {
+				"fill-color": "hsl(39, 41%, 86%)"
+			}
+		},
+		{
+			"id": "terrain",
+			"type": "fill",
+			"source": "buildings",
+			"source-layer" : "terreinvlak",
+			"maxzoom": 20,
+			"minzoom": 0,
+			"paint": {
+				"fill-color": {
+					"property": "type_landgebruik",
+					"stops": [
+				        	["", "#C3DBB5"],
+						["zand", "#0ff"]
+					]
+				}	
+			}
+		},
+		{
+			"id": "building-extrusion",
+			"type": "fill",
+			"source": "buildings",
+			"source-layer" : "buildings",
+			"maxzoom": 20,
+			"minzoom": 14,
+			"paint": {
+				"fill-color": "hsl(39, 41%, 86%)"
+			}
+		},
+		{
+			"id": "2D-buildings",
+			"type": "fill",
+			"source":"buildings",
+			"source-layer":"buildings",
+			"maxzoom":14,
+			"minzoom": 10,
+			"paint": {
+				"fill-color": "hsl(39, 41%, 86%)"
+			}
+		},
+		{
+			"id": "building-labels",
+			"type": "symbol",
+			"source": "buildings",
+			"source-layer" : "buildings",
+			"maxzoom": 20,
+			"minzoom": 14,
+			"layout": {
+				"text-font": [
+					"Open Sans Regular"
+				],
+				"text-size": 17,
+				"text-field": "{name}",
+				"symbol-placement": "point"
+			},
+			"paint": {
+				"text-color": "#ffff00",
+				"text-halo-width": 1,
+				"text-halo-color": "#000"
+			}
+		}
+	]
+}

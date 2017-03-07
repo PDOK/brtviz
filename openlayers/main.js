@@ -17,7 +17,7 @@ var map = new ol.Map({
     })
 });
 
-fetch('http://localhost/style.json').then(function(response) {
+fetch('style.json').then(function(response) {
   response.json().then(function(glStyle) {
     olms.applyStyle(layer, glStyle, 'buildings').then(function() {
       map.addLayer(layer);
