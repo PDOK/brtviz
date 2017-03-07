@@ -1,8 +1,8 @@
-# GeoServer
+# Web Mercator 
 
-## GeoServer SLDs
+## Vergelijking
 
-Voor het maken van .pbf bestanden maakt GeoServer gebruikt van het WMS end point. De SLD bepaalt voor een WMS welke kaartobjecten worden weergegeven op welke schaalniveaus en met welke stijlen. Voor vector tiles wordt de stijl in de kaart-viewer meegegeven. In de SLD wordt nog de schaalafhankelijkheid meegegeven m.b.v. `MaxScaleDenominator`. De vector tiles worden geserveerd volgens het Spherical Mercator tiling schema. De kaartlagen van de BRT-Achtergrondkaart die in de FGDB worden aangeleverd zijn aangegeven m.b.v. het zoomniveau volgens de Nederlandse Praktijkrichtlijn Tiling 1.1. Zie onderstaande tabel voor de relatie tussen het Spherical Mercator (a.k.a. Google) tiling schema en het Nederlandse [Praktijkrichtlijn Tiling 1.1.](http://www.geonovum.nl/wegwijzer/standaarden/praktijkrichtlijn-tiling-11). Zo worden de juiste lagen van de BRT-Achtergrond gebruikt voor het meest toepasselijke zoomniveau in vector tile cache.
+De vector tiles worden geserveerd volgens het Spherical Mercator tiling schema. De kaartlagen van de BRT-Achtergrondkaart die in de FGDB worden aangeleverd zijn aangegeven m.b.v. het zoomniveau volgens de Nederlandse Praktijkrichtlijn Tiling 1.1. Zie onderstaande tabel voor de relatie tussen het Spherical Mercator (a.k.a. Google) tiling schema en het Nederlandse [Praktijkrichtlijn Tiling 1.1.](http://www.geonovum.nl/wegwijzer/standaarden/praktijkrichtlijn-tiling-11). Zo worden de juiste lagen van de BRT-Achtergrond gebruikt voor het meest toepasselijke zoomniveau in vector tile cache.
 
 | Zoom (Google) | Resolutie       | Schaal (96dpi) | MaxScaleDenominator | Zoom (RD) | Resolution | Schaal (96 dpi)|
 |:-------------:|----------------:|---------------:|--------------------:|:---------:|-----------:|---------------:|
