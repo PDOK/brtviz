@@ -12,3 +12,10 @@ Deze repository bevat de bestanden voor het visualiseren van de BRT-Achtergrondk
 ## Inleiding
 
 ### Doelstelling
+
+De introductie van de BRT-Achtergrondkaart als vector tiles heeft verschillende doelen:
+
+* Minder opslagruimte: vector tiles zijn gecomprimeerd (GZIP) en binair opgeslagen vectoren in plaats van rasters.
+* Gemakkelijkerer ontwerpen: geen XML-bestanden (Styled Layer Descriptors), maar Mapbox Style Objects die je met [Mapbox Studio](https://www.mapbox.com/studio/signin/) en [Maputnik](https://github.com/maputnik/editor) kan maken.
+* Meer ontwerpvrijheid: de cartografische vormgeving van de vector tiles wordt pas in de applicatie geconfigureerd
+* Snellere rasters: indien de applicatie toch rasters afneemt, dan gebruikt de server hiervoor de vector tiles. Zo wordt de database niet meer bevraagd. De juiste informatie voor ieder schaalniveau is al omgeslagen in de vector tiles
