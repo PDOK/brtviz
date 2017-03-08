@@ -1,3 +1,4 @@
+
 {
 	"version": 8,
 	"name": "brt_a",
@@ -30,8 +31,15 @@
 			"minzoom": 0,
 			"paint": {
 				"fill-opacity": 1,
-				"fill-color": "hsl(39, 41%, 86%)",
-				"fill-outline-color": "rgb(0,0,0)"
+				"fill-color": {
+					"property": "viscode",
+					"stops":
+					[
+						[{"zoom":8, "value":"18081"}, "#80BDE3"],
+						[{"zoom":8, "value":"18080"}, "#D6F1E9"]
+					]
+				},
+				"fill-outline-color": "#80BDE3"
 			}
 		},
 		// 2. Layer Terreinvlak POLYGON
@@ -44,7 +52,19 @@
 			"minzoom": 0,
 			"paint": {
 				"fill-opacity": 1,
-				"fill-color": "hsl(39, 41%, 86%)",
+				"fill-color": {
+					"property": "type_landgebruik",
+					"stops":
+					[
+						[{"zoom":8, "value":"bos: grind"		}, "#80BDE3"],
+						[{"zoom":8, "value":"bos: gemengd bos"	}, "#D6F1E9"],
+						[{"zoom":8, "value":"zand"				}, "#80BDE3"],
+						[{"zoom":8, "value":"bos: loofbos"		}, "#D6F1E9"],
+						[{"zoom":8, "value":"heide"				}, "#80BDE3"],
+						[{"zoom":8, "value":"bos: naaldbos"		}, "#D6F1E9"],
+						[{"zoom":8, "value":"basaltblokken, steenglooiing"}, "#D6F1E9"]
+					]
+				},
 				"fill-outline-color": "rgb(0,0,0)"
 			}
 		},
@@ -58,7 +78,17 @@
 			"minzoom": 0,
 			"paint": {
 				"fill-opacity": 1,
-				"fill-color": "hsl(39, 41%, 86%)",
+				"fill-color": {
+					"property": "type_water",
+					"stops":
+					[ //Wss niet nodig
+						[{"zoom":8, "value":"meer, plas"	}, "#80BDE3"],
+						[{"zoom":8, "value":"waterloop"		}, "#D6F1E9"],
+						[{"zoom":8, "value":"overig"		}, "#80BDE3"],
+						[{"zoom":8, "value":"droogvallend"	}, "#D6F1E9"],
+						[{"zoom":8, "value":"zee"			}, "#80BDE3"]
+					]
+				},
 				"fill-outline-color": "rgb(0,0,0)"
 			}
 		},
@@ -109,8 +139,32 @@
 			"line-miter-limit": 2, //default
 			"paint": {
 				"line-opacity": 1,
-				"line-color": "hsl(39, 41%, 86%)",
-				"line-width": 1
+				"line-color": {
+					"property": "type_weg",
+					"stops":
+					[
+						[{"zoom":8, "value":"hoofdweg"		}, "#fff"],
+						[{"zoom":8, "value":"straat"		}, "#fff"],
+						[{"zoom":8, "value":"overig"		}, "#fff"],
+						[{"zoom":8, "value":"autosnelweg"	}, "#fff"],
+						[{"zoom":8, "value":"lokale weg"	}, "#fff"],
+						[{"zoom":8, "value":"regionale weg"	}, "#fff"],
+						[{"zoom":8, "value":"veerverbinding"}, "#fff"]
+					]
+				},
+				"line-width": {
+					"property": "type_weg",
+					"stops":
+					[
+						[{"zoom":8, "value":"hoofdweg"		}, 4],
+						[{"zoom":8, "value":"straat"		}, 1],
+						[{"zoom":8, "value":"overig"		}, 1],
+						[{"zoom":8, "value":"autosnelweg"	}, 5],
+						[{"zoom":8, "value":"lokale weg"	}, 3],
+						[{"zoom":8, "value":"regionale weg"	}, 3],
+						[{"zoom":8, "value":"veerverbinding"}, 3]
+					]
+				}
 			}
 		},
 		// 7. Layer Wegdeelvlak POLYGON
@@ -123,7 +177,75 @@
 			"minzoom": 13,
 			"paint": {
 				"fill-opacity": 1,
-				"fill-color": "hsl(39, 41%, 86%)",
+				"fill-color": {
+					"property": "type_weg",
+					"stops":
+					[
+						[{"value" :"autosnelweg"}, "#fff"],
+						[{"value" :"hoofdweg|lokale weg|straat"}, "#fff"],
+						[{"value" :"autosnelweg|hoofdweg|overig"}, "#fff"],
+						[{"value" :"lokale weg|straat"}, "#fff"],
+						[{"value" :"parkeerplaats"}, "#fff"],
+						[{"value" :"regionale weg|lokale weg|straat"}, "#fff"],
+						[{"value" :"autosnelweg|regionale weg|lokale weg"}, "#fff"],
+						[{"value" :"overig"}, "#fff"],
+						[{"value" :"parkeerplaats: carpool"}, "#fff"],
+						[{"value" :"hoofdweg|regionale weg|lokale weg"}, "#fff"],
+						[{"value" :"autosnelweg|hoofdweg|regionale weg"}, "#fff"],
+						[{"value" :"rolbaan, platform|overig"}, "#fff"],
+						[{"value" :"autosnelweg|overig"}, "#fff"],
+						[{"value" :"hoofdweg|regionale weg|lokale weg|straat"}, "#fff"],
+						[{"value" :"hoofdweg|overig"}, "#fff"],
+						[{"value" :"autosnelweg|straat|overig"}, "#fff"],
+						[{"value" :"autosnelweg|lokale weg|overig"}, "#fff"],
+						[{"value" :"autosnelweg|straat"}, "#fff"],
+						[{"value" :"hoofdweg|lokale weg|overig"}, "#fff"],
+						[{"value" :"startbaan, landingsbaan|rolbaan, platform"}, "#fff"],
+						[{"value" :"hoofdweg|straat"}, "#fff"],
+						[{"value" :"autosnelweg|hoofdweg|lokale weg"}, "#fff"],
+						[{"value" :"autosnelweg|regionale weg|overig"}, "#fff"],
+						[{"value" :"regionale weg|overig"}, "#fff"],
+						[{"value" :"hoofdweg|lokale weg"}, "#fff"],
+						[{"value" :"hoofdweg|straat|overig"}, "#fff"],
+						[{"value" :"hoofdweg|regionale weg|straat"}, "#fff"],
+						[{"value" :"regionale weg"}, "#fff"],
+						[{"value" :"autosnelweg|hoofdweg|straat"}, "#fff"],
+						[{"value" :"hoofdweg|regionale weg|straat|overig"}, "#fff"],
+						[{"value" :"hoofdweg"}, "#fff"],
+						[{"value" :"rolbaan, platform"}, "#fff"],
+						[{"value" :"autosnelweg|hoofdweg|regionale weg|lokale weg"}, "#fff"],
+						[{"value" :"straat"}, "#fff"],
+						[{"value" :"autosnelweg|hoofdweg|regionale weg|straat"}, "#fff"],
+						[{"value" :"startbaan, landingsbaan"}, "#fff"],
+						[{"value" :"parkeerplaats: P+R"}, "#fff"],
+						[{"value" :"lokale weg"}, "#fff"],
+						[{"value" :"regionale weg|lokale weg|overig"}, "#fff"],
+						[{"value" :"autosnelweg|regionale weg"}, "#fff"],
+						[{"value" :"regionale weg|lokale weg|straat|overig"}, "#fff"],
+						[{"value" :"regionale weg|straat|overig"}, "#fff"],
+						[{"value" :"autosnelweg|regionale weg|lokale weg|overig"}, "#fff"],
+						[{"value" :"autosnelweg|hoofdweg|lokale weg|straat"}, "#fff"],
+						[{"value" :"autosnelweg|regionale weg|straat"}, "#fff"],
+						[{"value" :"hoofdweg|regionale weg|overig"}, "#fff"],
+						[{"value" :"hoofdweg|lokale weg|straat|overig"}, "#fff"],
+						[{"value" :"regionale weg|straat"}, "#fff"],
+						[{"value" :"straat|overig"}, "#fff"],
+						[{"value" :"autosnelweg|hoofdweg"}, "#fff"],
+						[{"value" :"hoofdweg|regionale weg"}, "#fff"],
+						[{"value" :"autosnelweg|regionale weg|straat|overig"}, "#fff"],
+						[{"value" :"autosnelweg|regionale weg|lokale weg|straat"}, "#fff"],
+						[{"value" :"lokale weg|overig"}, "#fff"],
+						[{"value" :"startbaan, landingsbaan|overig"}, "#fff"],
+						[{"value" :"autosnelweg|hoofdweg|regionale weg|overig"}, "#fff"],
+						[{"value" :"lokale weg|straat|overig"}, "#fff"],
+						[{"value" :"regionale weg|lokale weg"}, "#fff"],
+						[{"value" :"autosnelweg|lokale weg"}, "#fff"],
+						[{"value" :"startbaan, landingsbaan|rolbaan, platform|overig"}, "#fff"],
+						[{"value" :"autosnelweg|hoofdweg|regionale weg|straat|overig"}, "#fff"],
+						[{"value" :"hoofdweg|regionale weg|lokale weg|overig"}, "#fff"],
+						[{"value" :"autosnelweg|lokale weg|straat"}, "#fff"]
+					]
+				},
 				"fill-outline-color": "rgb(0,0,0)"
 			}
 		},
@@ -293,3 +415,68 @@
 		}
 	]
 }
+
+
+[{"value" :"autosnelweg"}, "#fff"],
+[{"value" :"hoofdweg|lokale weg|straat"}, "#fff"],
+[{"value" :"autosnelweg|hoofdweg|overig"}, "#fff"],
+[{"value" :"lokale weg|straat"}, "#fff"],
+[{"value" :"parkeerplaats"}, "#fff"],
+[{"value" :"regionale weg|lokale weg|straat"}, "#fff"],
+[{"value" :"autosnelweg|regionale weg|lokale weg"}, "#fff"],
+[{"value" :"overig"}, "#fff"],
+[{"value" :"parkeerplaats: carpool"}, "#fff"],
+[{"value" :"hoofdweg|regionale weg|lokale weg"}, "#fff"],
+[{"value" :"autosnelweg|hoofdweg|regionale weg"}, "#fff"],
+[{"value" :"rolbaan, platform|overig"}, "#fff"],
+[{"value" :"autosnelweg|overig"}, "#fff"],
+[{"value" :"hoofdweg|regionale weg|lokale weg|straat"}, "#fff"],
+[{"value" :"hoofdweg|overig"}, "#fff"],
+[{"value" :"autosnelweg|straat|overig"}, "#fff"],
+[{"value" :"autosnelweg|lokale weg|overig"}, "#fff"],
+[{"value" :"autosnelweg|straat"}, "#fff"],
+[{"value" :"hoofdweg|lokale weg|overig"}, "#fff"],
+[{"value" :"startbaan, landingsbaan|rolbaan, platform"}, "#fff"],
+[{"value" :"hoofdweg|straat"}, "#fff"],
+[{"value" :"autosnelweg|hoofdweg|lokale weg"}, "#fff"],
+[{"value" :"autosnelweg|regionale weg|overig"}, "#fff"],
+[{"value" :"regionale weg|overig"}, "#fff"],
+[{"value" :"hoofdweg|lokale weg"}, "#fff"],
+[{"value" :"hoofdweg|straat|overig"}, "#fff"],
+[{"value" :"hoofdweg|regionale weg|straat"}, "#fff"],
+[{"value" :"regionale weg"}, "#fff"],
+[{"value" :"autosnelweg|hoofdweg|straat"}, "#fff"],
+[{"value" :"hoofdweg|regionale weg|straat|overig"}, "#fff"],
+[{"value" :"hoofdweg"}, "#fff"],
+[{"value" :"rolbaan, platform"}, "#fff"],
+[{"value" :"autosnelweg|hoofdweg|regionale weg|lokale weg"}, "#fff"],
+[{"value" :"straat"}, "#fff"],
+[{"value" :"autosnelweg|hoofdweg|regionale weg|straat"}, "#fff"],
+[{"value" :"startbaan, landingsbaan"}, "#fff"],
+[{"value" :"parkeerplaats: P+R"}, "#fff"],
+[{"value" :"lokale weg"}, "#fff"],
+[{"value" :"regionale weg|lokale weg|overig"}, "#fff"],
+[{"value" :"autosnelweg|regionale weg"}, "#fff"],
+[{"value" :"regionale weg|lokale weg|straat|overig"}, "#fff"],
+[{"value" :"regionale weg|straat|overig"}, "#fff"],
+[{"value" :"autosnelweg|regionale weg|lokale weg|overig"}, "#fff"],
+[{"value" :"autosnelweg|hoofdweg|lokale weg|straat"}, "#fff"],
+[{"value" :"autosnelweg|regionale weg|straat"}, "#fff"],
+[{"value" :"hoofdweg|regionale weg|overig"}, "#fff"],
+[{"value" :"hoofdweg|lokale weg|straat|overig"}, "#fff"],
+[{"value" :"regionale weg|straat"}, "#fff"],
+[{"value" :"straat|overig"}, "#fff"],
+[{"value" :"autosnelweg|hoofdweg"}, "#fff"],
+[{"value" :"hoofdweg|regionale weg"}, "#fff"],
+[{"value" :"autosnelweg|regionale weg|straat|overig"}, "#fff"],
+[{"value" :"autosnelweg|regionale weg|lokale weg|straat"}, "#fff"],
+[{"value" :"lokale weg|overig"}, "#fff"],
+[{"value" :"startbaan, landingsbaan|overig"}, "#fff"],
+[{"value" :"autosnelweg|hoofdweg|regionale weg|overig"}, "#fff"],
+[{"value" :"lokale weg|straat|overig"}, "#fff"],
+[{"value" :"regionale weg|lokale weg"}, "#fff"],
+[{"value" :"autosnelweg|lokale weg"}, "#fff"],
+[{"value" :"startbaan, landingsbaan|rolbaan, platform|overig"}, "#fff"],
+[{"value" :"autosnelweg|hoofdweg|regionale weg|straat|overig"}, "#fff"],
+[{"value" :"hoofdweg|regionale weg|lokale weg|overig"}, "#fff"],
+[{"value" :"autosnelweg|lokale weg|straat"}, "#fff"],
