@@ -1,27 +1,18 @@
 {
 	"version": 8,
-	"name": "3DNederland",
+	"name": "brt_a",
 	"glyphs": "/font/{fontstack}/{range}.pbf",
 	"sources": {
-		"buildings": {
+		"brt_achtergrond_source": {
 			"type": "vector",
 			"scheme": "tile",
 			"tiles": [
-				"http://localhost/terreinvlak_3/{z}/{x}/{y}.pbf"
+				"http://localhost/brt_achtergrond/{z}/{x}/{y}.pbf"
 			]
 		}
 	},	
-	"light": {
-		"anchor":"map",
-		"color": "#fff",
-		"intensity":0.4,
-		"position": [
-			1.5,
-			90,
-			10
-		]
-	},
 	"layers":[
+		// Background color
 		{
 			"id":  "background",
 			"type": "background",
@@ -29,75 +20,275 @@
 				"background-color":"#333333"
 			}
 		},
+		// 1. Layer Registratiefgebiedvlak POLYGON
 		{
-			"id": "terrein_set",
+			"id": "Registratiefgebiedvlak",
 			"type": "fill",
-			"source": "buildings",
-			"source-layer" : "terreinvlak_3",
+			"source": "brt_achtergrond_source",
+			"source-layer" : "registratiefgebiedvlak",
 			"maxzoom": 20,
 			"minzoom": 0,
 			"paint": {
-				"fill-color": "hsl(39, 41%, 86%)"
+				"fill-opacity": 1,
+				"fill-color": "hsl(39, 41%, 86%)",
+				"fill-outline-color": "rgb(0,0,0)"
 			}
 		},
+		// 2. Layer Terreinvlak POLYGON
 		{
-			"id": "terrain",
+			"id": "Terreinvlak",
 			"type": "fill",
-			"source": "buildings",
+			"source": "brt_achtergrond_source",
 			"source-layer" : "terreinvlak",
 			"maxzoom": 20,
 			"minzoom": 0,
 			"paint": {
-				"fill-color": {
-					"property": "type_landgebruik",
-					"stops": [
-				        	["", "#C3DBB5"],
-						["zand", "#0ff"]
-					]
-				}	
+				"fill-opacity": 1,
+				"fill-color": "hsl(39, 41%, 86%)",
+				"fill-outline-color": "rgb(0,0,0)"
 			}
 		},
+		// 3. Layer Waterdeelvlak POLYGON
 		{
-			"id": "building-extrusion",
+			"id": "Waterdeelvlak",
 			"type": "fill",
-			"source": "buildings",
-			"source-layer" : "buildings",
+			"source": "brt_achtergrond_source",
+			"source-layer" : "waterdeelvlak",
 			"maxzoom": 20,
-			"minzoom": 14,
+			"minzoom": 0,
 			"paint": {
-				"fill-color": "hsl(39, 41%, 86%)"
+				"fill-opacity": 1,
+				"fill-color": "hsl(39, 41%, 86%)",
+				"fill-outline-color": "rgb(0,0,0)"
 			}
 		},
+		// 4. Layer Waterdeellijn LINE
 		{
-			"id": "2D-buildings",
+			"id": "Waterdeellijn",
+			"type": "line",
+			"source": "brt_achtergrond_source",
+			"source-layer" : "waterdeellijn",
+			"maxzoom": 20,
+			"minzoom": 6,
+			"line-cap": "butt",//default
+			"line-join": "miter",//default
+			"line-miter-limit": 2, //default
+			"paint": {
+				"line-opacity": 1,
+				"line-color": "hsl(39, 41%, 86%)",
+				"line-width": 1
+			}
+		},
+		// 5. Layer Registratiefgebiedlijn LINE
+		{
+			"id": "Registratiefgebiedlijn",
+			"type": "line",
+			"source": "brt_achtergrond_source",
+			"source-layer" : "registratiefgebiedlijn",
+			"maxzoom": 20,
+			"minzoom": 0,
+			"line-cap": "butt",//default
+			"line-join": "miter",//default
+			"line-miter-limit": 2, //default
+			"paint": {
+				"line-opacity": 1,
+				"line-color": "hsl(39, 41%, 86%)",
+				"line-width": 1
+			}
+		},
+		// 6. Layer Wegdeellijn LINE
+		{
+			"id": "Wegdeellijn",
+			"type": "line",
+			"source": "brt_achtergrond_source",
+			"source-layer" : "wegdeellijn",
+			"maxzoom": 20,
+			"minzoom": 6,
+			"line-cap": "butt",//default
+			"line-join": "miter",//default
+			"line-miter-limit": 2, //default
+			"paint": {
+				"line-opacity": 1,
+				"line-color": "hsl(39, 41%, 86%)",
+				"line-width": 1
+			}
+		},
+		// 7. Layer Wegdeelvlak POLYGON
+		{
+			"id": "Wegdeelvlak",
 			"type": "fill",
-			"source":"buildings",
-			"source-layer":"buildings",
-			"maxzoom":14,
-			"minzoom": 10,
+			"source": "brt_achtergrond_source",
+			"source-layer" : "wegdeelvlak",
+			"maxzoom": 20,
+			"minzoom": 13,
 			"paint": {
-				"fill-color": "hsl(39, 41%, 86%)"
+				"fill-opacity": 1,
+				"fill-color": "hsl(39, 41%, 86%)",
+				"fill-outline-color": "rgb(0,0,0)"
 			}
 		},
+		// 8. Layer Gebouwvlak POLYGON
 		{
-			"id": "building-labels",
+			"id": "Gebouwvlak",
+			"type": "fill",
+			"source": "brt_achtergrond_source",
+			"source-layer" : "gebouwvlak",
+			"maxzoom": 20,
+			"minzoom": 12,
+			"paint": {
+				"fill-opacity": 1,
+				"fill-color": "hsl(39, 41%, 86%)",
+				"fill-outline-color": "rgb(0,0,0)"
+			}
+		},
+		// 9. Layer Gebouwpunt POINT
+		{
+			"id": "Gebouwpunt",
 			"type": "symbol",
-			"source": "buildings",
-			"source-layer" : "buildings",
+			"source": "brt_achtergrond_source",
+			"source-layer" : "gebouwpunt",
 			"maxzoom": 20,
 			"minzoom": 14,
-			"layout": {
-				"text-font": [
-					"Open Sans Regular"
-				],
-				"text-size": 17,
-				"text-field": "{name}",
-				"symbol-placement": "point"
-			},
+			"symbol-placement": "point",
+			"symbol-spacing" : 250,
+			"symbol-avoid-edges" : true,
+			"text-field":"nederlandse_naam",
+			"text-font": "Open Sans Regular",
+			"text-size":12,
+			"text-max-widht": 10,
+			"text-line-height": 1.5,
 			"paint": {
-				"text-color": "#ffff00",
-				"text-halo-width": 1,
-				"text-halo-color": "#000"
+				"text-opacity": 1,
+				"text-color": "rgb(0,0,0)",
+				"text-halo-color": "rgb(0,0,0)",
+				"text-halo-width": 2,
+				"text-halo-blur":2
+			}
+		},
+		// 10. Layer spoorbaanlijn LINE
+		{
+			"id": "spoorbaanlijn",
+			"type": "line",
+			"source": "brt_achtergrond_source",
+			"source-layer" : "spoorbaanlijn",
+			"maxzoom": 20,
+			"minzoom": 12,
+			"line-cap": "butt",//default
+			"line-join": "miter",//default
+			"line-miter-limit": 2, //default
+			"paint": {
+				"line-opacity": 1,
+				"line-color": "hsl(39, 41%, 86%)",
+				"line-width": 1
+			}
+		},
+		// 11. Layer inrichtingselementlijn LINE
+		{
+			"id": "inrichtingselementlijn",
+			"type": "line",
+			"source": "brt_achtergrond_source",
+			"source-layer" : "inrichtingselementlijn",
+			"maxzoom": 20,
+			"minzoom": 14,
+			"line-cap": "butt",//default
+			"line-join": "miter",//default
+			"line-miter-limit": 2, //default
+			"paint": {
+				"line-opacity": 1,
+				"line-color": "hsl(39, 41%, 86%)",
+				"line-width": 1
+			}
+		},
+		// 12. Layer inrichtingselementpunt POINT
+		{
+			"id": "inrichtingselementpunt",
+			"type": "circle",
+			"source": "brt_achtergrond_source",
+			"source-layer" : "inrichtingselementpunt",
+			"maxzoom": 20,
+			"minzoom": 14,
+			"paint": {
+				"circle-radius": 5,
+				"circle-color": "#000000",
+				"circle-opacity": 1,
+				"circle-stroke-width": 1,
+				"circle-stroke-color" : "#eeeeee",
+				"circle-stroke-opacity": 1
+			}
+		},
+		// 13. Layer straatnamen LINE
+		{
+			"id": "straatnamen",
+			"type": "symbol",
+			"source": "brt_achtergrond_source",
+			"source-layer" : "straatnamen",
+			"maxzoom": 20,
+			"minzoom": 6,
+			"line-cap": "butt",//default
+			"line-join": "miter",//default
+			"line-miter-limit": 2, //default
+			"symbol-placement": "line",
+			"symbol-spacing" : 250,
+			"symbol-avoid-edges" : true,
+			"text-field":"nederlandse_naam",
+			"text-font": "Open Sans Regular",
+			"text-size":12,
+			"text-max-widht": 10,
+			"text-line-height": 1.5,
+			"paint": {
+				"text-opacity": 1,
+				"text-color": "rgb(0,0,0)",
+				"text-halo-color": "rgb(0,0,0)",
+				"text-halo-width": 2,
+				"text-halo-blur":2
+			}
+		},	
+		// 14. Layer annotaties POINT
+		{
+			"id": "annotaties",
+			"type": "symbol",
+			"source": "brt_achtergrond_source",
+			"source-layer" : "annotaties",
+			"maxzoom": 20,
+			"minzoom": 6,
+			"symbol-placement": "point",
+			"symbol-spacing" : 250,
+			"symbol-avoid-edges" : true,
+			"text-field":"nederlandse_naam",
+			"text-font": "Open Sans Regular",
+			"text-size":12,
+			"text-max-widht": 10,
+			"text-line-height": 1.5,
+			"paint": {
+				"text-opacity": 1,
+				"text-color": "rgb(0,0,0)",
+				"text-halo-color": "rgb(0,0,0)",
+				"text-halo-width": 2,
+				"text-halo-blur":2
+			}
+		},
+		// 14. Layer plaatsnamen POINT
+		{
+			"id": "plaatsnamen",
+			"type": "symbol",
+			"source": "brt_achtergrond_source",
+			"source-layer" : "plaatsnamen",
+			"maxzoom": 20,
+			"minzoom": 6,
+			"symbol-placement": "point",
+			"symbol-spacing" : 250,
+			"symbol-avoid-edges" : true,
+			"text-field":"nederlandse_naam",
+			"text-font": "Open Sans Regular",
+			"text-size":12,
+			"text-max-widht": 10,
+			"text-line-height": 1.5,
+			"paint": {
+				"text-opacity": 1,
+				"text-color": "rgb(0,0,0)",
+				"text-halo-color": "rgb(0,0,0)",
+				"text-halo-width": 2,
+				"text-halo-blur":2
 			}
 		}
 	]
