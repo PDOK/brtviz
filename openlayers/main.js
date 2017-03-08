@@ -5,7 +5,7 @@ var layer = new ol.layer.VectorTile({
 	        format: new ol.format.MVT(),
         	tileGrid: ol.tilegrid.createXYZ({maxZoom: 18}),
 	        tilePixelRatio: 16,
-        	url: 'http://localhost/terreinvlak_3/{z}/{x}/{y}.pbf'
+        	url: 'http://localhost/brt_achtergrond/{z}/{x}/{y}.pbf'
 	})
 });
 
@@ -19,7 +19,7 @@ var map = new ol.Map({
 
 fetch('style.json').then(function(response) {
   response.json().then(function(glStyle) {
-    olms.applyStyle(layer, glStyle, 'buildings').then(function() {
+    olms.applyStyle(layer, glStyle, 'brt_a').then(function() {
       map.addLayer(layer);
     });
   });
