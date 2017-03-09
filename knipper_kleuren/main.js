@@ -33,28 +33,23 @@ mytiming2 = [];
 // Set different styles
 function kleur_map(in_stijl){
   stopall();
-  stijl = in_stijl
-  if( stijl == "kleur"){
-    console.log("kleur");
-    var style_kleur = fetch('http://localhost:8000/style.json').then(function(response) {
-      response.json().then(function(glStyle) {
-        olms.applyStyle(layer, glStyle, 'brt_achtergrond_source')
-      });
-    });
-  } 
-  if (stijl == "grijs") {
-    console.log("grijs");
-    var style_grijs = fetch('http://localhost:8000/style_grijs.json').then(function(response) {
-      response.json().then(function(glStyle) {
-        olms.applyStyle(layer, glStyle, 'brt_achtergrond_source')
-      });
-    });
-  }
-  else { 
-      layer.setStyle(function(feature, resolution){ return randomStyle}
-  )};
+  switch(in_stijl) {
+    case "kleur":
+        var style_kleur = fetch('http://localhost:8000/style.json').then(function(response) {
+          response.json().then(function(glStyle) {
+            olms.applyStyle(layer, glStyle, 'brt_achtergrond_source')
+          });
+        });
+        break;
+    case "grijs":
+        var style_grijs = fetch('http://localhost:8000/style_grijs.json').then(function(response) {
+          response.json().then(function(glStyle) {
+            olms.applyStyle(layer, glStyle, 'brt_achtergrond_source')
+          });
+        });
+        break;
+    } 
 };
-
 
 // Create random color
 function getRandomColor() {
@@ -66,57 +61,95 @@ function getRandomColor() {
     return color;
 };
 
+// Create random number
+function getRandomNumber() {
+    nr = Math.floor((Math.random()* 5));
+    return nr;
+};
+
 // Create new random style
 function createRandomStyle() {
-  randomStyle = [new ol.style.Style({
+  randomStyle = {
+    'Point': new ol.style.Style({
+      image: new ol.style.Circle({
+        fill: new ol.style.Fill({
+          color: getRandomColor()
+        }),
+        radius: getRandomNumber(),
+        stroke: new ol.style.Stroke({
+          color: getRandomColor(),
+          width: 1
+        })
+      })
+    }),
+    'LineString': new ol.style.Style({
+      stroke: new ol.style.Stroke({
+        color: getRandomColor(),
+        width: getRandomNumber()
+      })
+    }),
+    'Polygon': new ol.style.Style({
       fill: new ol.style.Fill({
         color: getRandomColor()
+      }),
+      stroke: new ol.style.Stroke({
+        color: 'rgba(0,0,0,0)',
+        width: 0
       })
-    })    
-  ];
+    }),
+    'MultiPoint': new ol.style.Style({
+      image: new ol.style.Circle({
+        fill: new ol.style.Fill({
+          color: getRandomColor()
+        }),
+        radius: getRandomNumber(),
+        stroke: new ol.style.Stroke({
+          color: getRandomColor(),
+          width: 1
+        })
+      })
+    }),
+    'MultiLineString': new ol.style.Style({
+      stroke: new ol.style.Stroke({
+        color: getRandomColor(),
+        width: getRandomNumber()
+      })
+    }),
+    'MultiPolygon': new ol.style.Style({
+      fill: new ol.style.Fill({
+        color: getRandomColor()
+      }),
+      stroke: new ol.style.Stroke({
+        color: 'rgba(0,0,0,0)',
+        width: 0
+      })
+    })
+  };
 };
 
 // Set different Style
 function setStyle() {
   layer.setStyle(function(feature, resolution) {
-     return randomStyle
-  });
-  // layer.setStyle(function(feature, resolution){ return randomStyle});
-  // if(stijl == "kleur"){ stijl = "grijs"}
-  // if (stijl == "random") { stijl = "kleur"}
-  // else { stijl = "random"}
-  // kleur_map();
-};
+        return randomStyle[feature.getGeometry().getType()];
+      })
+  };
+  // layer.setStyle(function(feature, resolution) {
+  //    return randomStyle
+  // });
 
 // start randomization
 function startall(){
-  console.log("START")
+  stopall();
   mytiming = window.setInterval(createRandomStyle, 300);
   mytiming2 = window.setInterval(setStyle, 300);
 };
 
 // stop randomization
 function stopall(){
-  console.log("STOP")
   clearInterval(mytiming);
   clearInterval(mytiming2);
 };  
 
-
-
 // initialize map with default Grijs
 map.addLayer(layer);
-var stijl = "grijs";
-kleur_map();
-
-
-// //CLick event!
-// map.on('click', function (e) {
-//     var features = map.queryRenderedFeatures(e.point, { layers: ['terreinvlak'] });
-//     if (!features.length) {
-//         return;
-//     }else {
-//        console.log(e);
-//     } 
-// });
-
+kleur_map("grijs");
