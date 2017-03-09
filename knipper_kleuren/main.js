@@ -1,3 +1,5 @@
+
+// create layer
 var layer = new ol.layer.VectorTile({
 	source: new ol.source.VectorTile({
         	attributions: 'Kadaster',
@@ -8,7 +10,7 @@ var layer = new ol.layer.VectorTile({
           renderBuffer: 10
 	})  
 });
-
+// Create map
 var map = new ol.Map({
     target: 'map',
     view: new ol.View({
@@ -16,12 +18,22 @@ var map = new ol.Map({
         zoom: 8
     })
 });
-map.addLayer(layer);
 
-var stijl = "grijs";
+// Create global randomstyle
+var randomStyle = [new ol.style.Style({
+      fill: new ol.style.Fill({
+        color: getRandomColor()
+      })
+    })    
+  ];
+
+mytiming = [];
+mytiming2 = [];
 
 // Set different styles
-kleur_map = function() {
+function kleur_map(in_stijl){
+  stopall();
+  stijl = in_stijl
   if( stijl == "kleur"){
     console.log("kleur");
     var style_kleur = fetch('http://localhost:8000/style.json').then(function(response) {
@@ -44,48 +56,7 @@ kleur_map = function() {
 };
 
 
-kleur_map();
-
-var myMethod = function(){
-  var randomStyle = [new ol.style.Style({
-      fill: new ol.style.Fill({
-        color: getRandomColor()
-      })
-    })    
-  ];
-  var randomStyle2 = [new ol.style.Style({
-      fill: new ol.style.Fill({
-        color: getRandomColor()
-      })
-    })    
-  ];
-  var randomStyle3 = [new ol.style.Style({
-      fill: new ol.style.Fill({
-        color: getRandomColor()
-      })
-    })    
-  ];
-  layer.setStyle(function(feature, resolution) {
-     if (feature.get('fid') < 3000) {
-       return randomStyle;
-     } 
-     if (feature.get('fid') > 10000) {
-      return randomStyle;
-    }
-      else {
-       return randomStyle3;
-     }      
-  });
-  // layer.setStyle(function(feature, resolution){ return randomStyle});
-  // if(stijl == "kleur"){ stijl = "grijs"}
-  // if (stijl == "random") { stijl = "kleur"}
-  // else { stijl = "random"}
-  // kleur_map();
-}
-
-window.setInterval(myMethod, 1000);
-
-
+// Create random color
 function getRandomColor() {
     var letters = '0123456789ABCDEF';
     var color = '#';
@@ -93,31 +64,50 @@ function getRandomColor() {
         color += letters[Math.floor(Math.random() * 16)];
     }
     return color;
-}
+};
+
+// Create new random style
+function createRandomStyle() {
+  randomStyle = [new ol.style.Style({
+      fill: new ol.style.Fill({
+        color: getRandomColor()
+      })
+    })    
+  ];
+};
+
+// Set different Style
+function setStyle() {
+  layer.setStyle(function(feature, resolution) {
+     return randomStyle
+  });
+  // layer.setStyle(function(feature, resolution){ return randomStyle});
+  // if(stijl == "kleur"){ stijl = "grijs"}
+  // if (stijl == "random") { stijl = "kleur"}
+  // else { stijl = "random"}
+  // kleur_map();
+};
+
+// start randomization
+function startall(){
+  console.log("START")
+  mytiming = window.setInterval(createRandomStyle, 300);
+  mytiming2 = window.setInterval(setStyle, 300);
+};
+
+// stop randomization
+function stopall(){
+  console.log("STOP")
+  clearInterval(mytiming);
+  clearInterval(mytiming2);
+};  
 
 
 
-map.on('click', function(browserEvent) {
-  myMethod();
-});  
-
-
-
-
-// var style_simple = new ol.style.Style({
-//     fill: new ol.style.Fill({
-//       color: '#ADD8E6'
-//     }),
-//     stroke: new ol.style.Stroke({
-//       color: '#880000',
-//       width: 1
-//     })
-//   });
-
-//   function simpleStyle(feature) {
-//     // console.log(feature)
-//     return style_simple;
-//   }
+// initialize map with default Grijs
+map.addLayer(layer);
+var stijl = "grijs";
+kleur_map();
 
 
 // //CLick event!
