@@ -1,11 +1,11 @@
 {
 	"version": 8,
 	"name": "brt_a",
-	"glyphs": "/font/{fontstack}/{range}.pbf",
+	"glyphs": "http://test.geodata.nationaalgeoregister.nl/vector-viewer/style/font/{fontstack}/{range}.pbf",
 	"sources": {
 		"brt_achtergrond_source": {
 			"type": "vector",
-			"url": "http://localhost/brt_achtergrond/tilejson.json"
+			"url": "http://test.geodata.nationaalgeoregister.nl/vector-viewer/style/topojson.json"
 		} 
 	},	
 	"layers":[

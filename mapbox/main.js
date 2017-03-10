@@ -4,9 +4,9 @@ var bounds = [
 ];
 
 var map = new mapboxgl.Map({
-    container: 'map',
+    container: "map",
     hash: true,
-    style: 'style.json',
+    style: "http://test.geodata.nationaalgeoregister.nl/vector-viewer/style/style.json",
     zoom: 9,
     maxBounds: bounds,
     pitch: 60,
@@ -14,4 +14,4 @@ var map = new mapboxgl.Map({
     center: [ 5.122178,52.090988]
 });
 
-map.addControl(new mapboxgl.NavigationControl(), 'top-left');
+map.addControl(new mapboxgl.NavigationControl(), "top-left");

@@ -6,7 +6,7 @@ var map = new L.map("map", {
 
 var gl = L.mapboxGL({
     accessToken: "no-token",
-    style: "style.json",
+    style: "http://test.geodata.nationaalgeoregister.nl/vector-viewer/style/style.json",
     attribution: "&copy; Map data <a href=\"http://wwww.kadaster.nl\">Kadaster</a>"
 }).addTo(map);
 

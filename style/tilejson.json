@@ -6,7 +6,7 @@
     "attribution": "&copy; Map data: <a href=\"http://www.kadaster.nl\" target=\"_blank\">Kadaster</a>",
     "scheme": "xyz",
     "tiles": [
-        "http://localhost/brt_achtergrond/{z}/{x}/{y}.pbf"
+        "http://test.geodata.nationaalgeoregister.nl/vector/brt_achtergrond/{z}/{x}/{y}.pbf"
     ],
     "minzoom": 0,
     "maxzoom": 20,
