@@ -5,10 +5,7 @@
 	"sources": {
 		"brt_achtergrond_source": {
 			"type": "vector",
-			"scheme": "tile",
-			"tiles": [
-				"http://localhost:8000/brt_achtergrond/{z}/{x}/{y}.pbf"
-			]
+			"url": "http://localhost/brt_achtergrond/tilejson.json"
 		} 
 	},	
 	"layers":[
@@ -16,7 +13,7 @@
 			"id":  "background",
 			"type": "background",
 			"paint": {
-				"background-color":"#333333"
+				"background-color":"#efefef"
 			}
 		},
 		{
@@ -28,9 +25,7 @@
 			"minzoom": 0,
 			"paint": {
 				"fill-opacity": 1,
-				"fill-color":"#D6F1E9",
-				"fill-outline-color": "#80BDE3",
-				"fill-outline-width": 3
+				"fill-color":"#D6F1E9"
 			}
 		},
 		{
@@ -43,8 +38,7 @@
 			"filter": ["in", "type_landgebruik", ""], 
 			"paint": {
 				"fill-opacity": 1,
-				"fill-color": "#C3DBB5",
-				"fill-outline-color": "#C3DBB5"
+				"fill-color": "#C3DBB5"
 			}
 		},
 		{
