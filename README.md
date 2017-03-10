@@ -44,3 +44,30 @@ Ga naar `Source > Add New Source`
 **Max Zoom**: *20*
 
 De waarde die je opgeeft bij **1st Tile URL** wijst naar de web service, die de `.pbf`-bestanden geeft. Deze web service kan lokaal draaien, maar je kan dus ook de service van PDOK gebruiken.
+
+
+# Styling
+
+## Sprite
+For creating custom sprites : https://github.com/mapbox/spritezero-cli
+Spritezero reads an input directory containing SVG files and generates a JSON layout file and PNG spritesheet.
+
+#### Installation
+
+	npm install -g @mapbox/spritezero-cli
+
+#### Usage
+
+	spritezero [output filename] [input directory]
+
+	  --retina      shorthand for --ratio=2
+	  --ratio=[n]   pixel ratio
+	  --unique      map identical images to multiple names
+
+## Fonts
+For creating custom fonts : https://github.com/klokantech/osm2vectortiles-gl-styles
+
+	npm install -g fontnik
+	# unpack font release from https://github.com/mapbox/mapbox-studio-default-fonts/releases
+	mkdir -p "glyphs/Open Sans Regular"
+	build-glyphs open-sans/OpenSans-Regular.ttf "glyphs/Open Sans Regular"
