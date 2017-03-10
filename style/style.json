@@ -5,10 +5,7 @@
 	"sources": {
 		"brt_achtergrond_source": {
 			"type": "vector",
-			"scheme": "tile",
-			"tiles": [
-				"http://localhost:8000/brt_achtergrond/{z}/{x}/{y}.pbf"
-			]
+			"url": "http://localhost/brt_achtergrond/tilejson.json"
 		} 
 	},	
 	"layers":[
@@ -16,7 +13,7 @@
 			"id":  "background",
 			"type": "background",
 			"paint": {
-				"background-color":"#333333"
+				"background-color":"#efefef"
 			}
 		},
 		{
@@ -26,27 +23,9 @@
 			"source-layer" : "registratiefgebiedvlak",
 			"maxzoom": 20,
 			"minzoom": 0,
-			"filter": ["==", "viscode", "18080"],
 			"paint": {
 				"fill-opacity": 1,
-				"fill-color":"#D6F1E9",
-				"fill-outline-color": "#FFFFFF",
-				"fill-outline-width": 3
-			}
-		},
-		{
-			"id": "registratiefgebiedvlak",
-			"type": "fill",
-			"source": "brt_achtergrond_source",
-			"source-layer" : "registratiefgebiedvlak",
-			"maxzoom": 20,
-			"minzoom": 0,
-			"filter": ["==", "viscode", "18081"],
-			"paint": {
-				"fill-opacity": 1,
-				"fill-color":"#80BDE3",
-				"fill-outline-color": "#FFFFFF",
-				"fill-outline-width": 3
+				"fill-color":"#D6F1E9"
 			}
 		},
 		{
@@ -55,12 +34,11 @@
 			"source": "brt_achtergrond_source",
 			"source-layer" : "terreinvlak",
 			"maxzoom": 20,
-			"minzoom": 6,
+			"minzoom": 0,
 			"filter": ["in", "type_landgebruik", ""], 
 			"paint": {
 				"fill-opacity": 1,
-				"fill-color": "#C3DBB5",
-				"fill-outline-color": "#C3DBB5"
+				"fill-color": "#C3DBB5"
 			}
 		},
 		{
@@ -69,7 +47,7 @@
 			"source": "brt_achtergrond_source",
 			"source-layer" : "terreinvlak",
 			"maxzoom": 20,
-			"minzoom": 6,
+			"minzoom": 0,
 			"filter": ["in", "type_landgebruik", "bos: grind", "bos: gemengd bos", "bos: loofbos", "bos: naaldbos"], 
 			"paint": {
 				"fill-opacity": 1,
@@ -83,7 +61,7 @@
 			"source": "brt_achtergrond_source",
 			"source-layer" : "terreinvlak",
 			"maxzoom": 20,
-			"minzoom": 8,
+			"minzoom": 0,
 			"filter": ["==", "type_landgebruik", "heide"], 
 			"paint": {
 				"fill-opacity": 1,
@@ -97,7 +75,7 @@
 			"source": "brt_achtergrond_source",
 			"source-layer" : "terreinvlak",
 			"maxzoom": 20,
-			"minzoom": 8,
+			"minzoom": 0,
 			"filter": ["==", "type_landgebruik", "heide"], 
 			"paint": {
 				"fill-opacity": 1,
@@ -111,7 +89,7 @@
 			"source": "brt_achtergrond_source",
 			"source-layer" : "terreinvlak",
 			"maxzoom": 20,
-			"minzoom": 8,
+			"minzoom": 0,
 			"filter": ["==", "type_landgebruik", "zand"], 
 			"paint": {
 				"fill-opacity": 1,
@@ -138,7 +116,7 @@
 			"source": "brt_achtergrond_source",
 			"source-layer" : "waterdeellijn",
 			"maxzoom": 20,
-			"minzoom": 8,
+			"minzoom": 6,
 			"line-cap": "round",
 			"line-join": "miter",
 			"line-miter-limit": 2, 
@@ -154,7 +132,7 @@
 			"source": "brt_achtergrond_source",
 			"source-layer" : "wegdeellijn",
 			"maxzoom": 10,
-			"minzoom": 7,
+			"minzoom": 5,
 			"line-cap": "butt",
 			"line-join": "miter",
 			"line-miter-limit": 2, 
@@ -171,7 +149,7 @@
 			"source": "brt_achtergrond_source",
 			"source-layer" : "wegdeellijn",
 			"maxzoom": 10,
-			"minzoom": 7,
+			"minzoom": 5,
 			"line-cap": "butt",
 			"line-join": "miter",
 			"line-miter-limit": 2, 
@@ -188,7 +166,7 @@
 			"source": "brt_achtergrond_source",
 			"source-layer" : "wegdeellijn",
 			"maxzoom": 20,
-			"minzoom": 8,
+			"minzoom": 6,
 			"line-cap": "butt",
 			"line-join": "miter",
 			"line-miter-limit": 2, 
@@ -205,7 +183,7 @@
 			"source": "brt_achtergrond_source",
 			"source-layer" : "wegdeellijn",
 			"maxzoom": 20,
-			"minzoom": 9,
+			"minzoom": 6,
 			"line-cap": "butt",
 			"line-join": "miter",
 			"line-miter-limit": 2, 
@@ -302,7 +280,7 @@
 			"source": "brt_achtergrond_source",
 			"source-layer" : "wegdeellijn",
 			"maxzoom": 20,
-			"minzoom": 10,
+			"minzoom": 6,
 			"line-cap": "butt",
 			"line-join": "miter",
 			"line-miter-limit": 2, 

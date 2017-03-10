@@ -35,18 +35,12 @@ De introductie van de BRT-Achtergrondkaart als vector tiles heeft verschillende 
 
 ## Configuratie
 
-Ga naar `Source > Add New Source`
+Ga naar `Open > Upload A New Style > Upload`
 
-**Source ID**: *BRT Achtergrondkaart*
-**Source Type**: *Vector (XYZ URLs)*
-**1st Tile URL**: *http://localhost/terreinvlak_3/{z}/{x}/{y}.pbf*
-**Min Zoom**: *0*
-**Max Zoom**: *20*
+Omdat in het JSON-bestand ook de verwijzing naar de Vector Tile service staat, pakt Maputnik dit op en toont de kaart.
 
-De waarde die je opgeeft bij **1st Tile URL** wijst naar de web service, die de `.pbf`-bestanden geeft. Deze web service kan lokaal draaien, maar je kan dus ook de service van PDOK gebruiken.
-
-
-# Styling
+## Cartografie
+Je kan met behulp van de interface en de JSON-interface de cartografische vormgeving van de kaart aanpassen.
 
 ## Sprite
 For creating custom sprites : https://github.com/mapbox/spritezero-cli
@@ -71,3 +65,4 @@ For creating custom fonts : https://github.com/klokantech/osm2vectortiles-gl-sty
 	# unpack font release from https://github.com/mapbox/mapbox-studio-default-fonts/releases
 	mkdir -p "glyphs/Open Sans Regular"
 	build-glyphs open-sans/OpenSans-Regular.ttf "glyphs/Open Sans Regular"
+

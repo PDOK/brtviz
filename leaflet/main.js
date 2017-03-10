@@ -1,6 +1,13 @@
-var map = L.map('map');
-map.setView(new L.LatLng( 52.3719, 4.9012),7);
+var map = new L.map("map", {
+    center: [52.3719, 4.9012],
+    zoom: 7,
+    attributionControl: true
+});
+
 var gl = L.mapboxGL({
-    accessToken: 'no-token',
-    style: 'style.json'
+    accessToken: "no-token",
+    style: "style.json",
+    attribution: "&copy; Map data <a href=\"http://wwww.kadaster.nl\">Kadaster</a>"
 }).addTo(map);
+
+map.attributionControl.setPrefix("");
