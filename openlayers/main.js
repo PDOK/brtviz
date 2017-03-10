@@ -42,7 +42,7 @@ var randomStyle = [new ol.style.Style({
     })    
   ];
 
-var text_style =  fetch('/text_style.json').then(function(response) {
+var text_style =  fetch('/vector-viewer/style/style_text.json').then(function(response) {
     response.json().then(function(glStyle) {
       olms.applyStyle(labels, glStyle, 'brt_achtergrond_source')
     });
@@ -56,14 +56,14 @@ function kleur_map(in_stijl){
   stopall();
   switch(in_stijl) {
     case "kleur":
-        var style_kleur = fetch('style.json').then(function(response) {
+        var style_kleur = fetch('/vector-viewer/style/style.json').then(function(response) {
           response.json().then(function(glStyle) {
             olms.applyStyle(layer, glStyle, 'brt_achtergrond_source')
           });
         });
         break;
     case "grijs":
-        var style_grijs = fetch('style_grijs.json').then(function(response) {
+        var style_grijs = fetch('/vector-viewer/style/style_grijs.json').then(function(response) {
           response.json().then(function(glStyle) {
             olms.applyStyle(layer, glStyle, 'brt_achtergrond_source')
           });

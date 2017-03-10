@@ -1,0 +1,120 @@
+{
+	"version": 8,
+	"name": "brt-achtergrondkaart-teksten",
+	"glyphs": "http://test.geodata.nationaalgeoregister.nl/vector-viewer/style/font/{fontstack}/{range}.pbf",
+	"sprite": "http://test.geodata.nationaalgeoregister.nl/vector-viewer/style/sprite/boom",
+	"sources": {
+		"brt_achtergrond_source": {
+			"type": "vector",
+			"url": "http://test.geodata.nationaalgeoregister.nl/vector-viewer/style/tilejson.json"
+		} 
+	},	
+	"layers":[
+		
+		{
+			"id": "plaatsnamen_middel",
+			"type": "symbol",
+			"source": "brt_achtergrond_source",
+			"source-layer" : "plaatsnamen",
+			"maxzoom": 10,
+			"minzoom": 8,
+			"filter": ["<", "aantalinwoners",  500000],
+			"symbol-placement": "point",
+			"symbol-avoid-edges" : false,
+			"layout" :{
+				"text-field":"{naamofficieel}",
+				"text-font": ["Open Sans Regular"],
+				"text-size":12,
+				"text-max-width": 500,
+				"text-anchor": "center",
+				"text-line-height": 1.5,
+				"text-justify": "center",
+				"text-padding": 5,
+				"text-allow-overlap": false
+			},
+			"paint": {
+				"text-opacity": 1,
+				"text-color": "#666",
+				"text-halo-color": "#fff",
+				"text-halo-width": 4,
+				"text-halo-blur":2
+			}
+		},
+		{
+			"id": "plaatsnamen_klein",
+			"type": "symbol",
+			"source": "brt_achtergrond_source",
+			"source-layer" : "plaatsnamen",
+			"maxzoom": 20,
+			"minzoom": 11,
+			"filter": ["<", "aantalinwoners",  500000],
+			"symbol-placement": "point",
+			"symbol-avoid-edges" : false,
+			"layout" :{
+				"text-field":"{naamofficieel}",
+				"text-font": ["Open Sans Regular"],
+				"text-size":10,
+				"text-max-width": 500,
+				"text-anchor": "center",
+				"text-line-height": 1.5,
+				"text-justify": "center",
+				"text-padding": 5,
+				"text-allow-overlap": false
+			},
+			"paint": {
+				"text-opacity": 1,
+				"text-color": "#666",
+				"text-halo-color": "#fff",
+				"text-halo-width": 4,
+				"text-halo-blur":2
+			}
+		},
+				{
+			"id": "inrichtingselementpunt",
+			"type": "symbol",
+			"source": "brt_achtergrond_source",
+			"source-layer" : "inrichtingselementpunt",
+			"maxzoom": 20,
+			"minzoom": 14 ,
+			"symbol-placement": "point",
+			"symbol-avoid-edges" : false,
+			"layout": {
+				"icon-size": 1,
+				"icon-image": "boom"
+			},
+			"paint": {
+				"icon-opacity": 1,
+				"icon-color": "#eee"
+			}
+		},
+		{
+			"id": "plaatsnamen_groot",
+			"type": "symbol",
+			"source": "brt_achtergrond_source",
+			"source-layer" : "plaatsnamen",
+			"maxzoom": 20,
+			"minzoom": 5,
+			"filter": [">=", "aantalinwoners", 500000],
+			"symbol-placement": "point",
+			"symbol-avoid-edges" : false,
+			"layout" :{
+				"text-field":"{naamofficieel}",
+				"text-font": ["Open Sans Regular"],
+				"text-size":16,
+				"text-max-width": 500,
+				"text-anchor": "center",
+				"text-line-height": 1.5,
+				"text-justify": "center",
+				"text-padding": 5,
+				"text-allow-overlap": false
+			},
+			"paint": {
+				"text-opacity": 1,
+				"text-color": "#666",
+				"text-halo-color": "#fff",
+				"text-halo-width": 4,
+				"text-halo-blur":2
+			}
+		}
+	]
+}
