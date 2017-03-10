@@ -1,9 +1,15 @@
-body {
+html, body {
+    border: 0;
     margin: 0;
-    background-color: #333;
+    padding: 0;
 }
+
 #map {
-    width: 100vw;
-    height: 100vh;
-    background-color: #333;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAMAAABhq6zVAAAACVBMVEUAAADl5eX////EwbxGAAAAAXRSTlMAQObYZgAAABFJREFUeAFjYESCKACdT38ZAAWhAAxcPQc7AAAAAElFTkSuQmCC) repeat scroll 0 0 #f9f9f9;
+    cursor: move;
 }
