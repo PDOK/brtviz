@@ -17,7 +17,7 @@
 			}
 		},
 		{
-			"id": "registratiefgebiedvlak",
+			"id": "registratiefgebiedvlak_leeg",
 			"type": "fill",
 			"source": "brt_achtergrond_source",
 			"source-layer" : "registratiefgebiedvlak",
@@ -26,9 +26,7 @@
 			"filter": ["==", "viscode", "18080"],
 			"paint": {
 				"fill-opacity": 1,
-				"fill-color":"#D6F1E9",
-				"line-color": "#BDC4C2",
-				"line-width": 1
+				"fill-color":"#D6F1E9"
 			}
 		},
 		{
@@ -41,9 +39,7 @@
 			"filter": ["==", "viscode", "18081"],
 			"paint": {
 				"fill-opacity": 1,
-				"fill-color":"#80BDE3",
-				"fill-outline-color": "#FFFFFF",
-				"fill-outline-width": 3
+				"fill-color":"#80BDE3"
 			}
 		},
 		{
