@@ -2,11 +2,12 @@
 	"version": 8,
 	"name": "brt_a",
 	"glyphs": "http://localhost:8000/font/{fontstack}/{range}.pbf",
+	"sprite": "http://localhost:8000/sprite/boom",
 	"sources": {
 		"brt_achtergrond_source": {
 			"type": "vector",
 			"scheme": "tile",
-			"tiles": [
+			"url": [
 				"http://localhost:8000/brt_achtergrond/{z}/{x}/{y}.pbf"
 			]
 		} 
@@ -72,31 +73,21 @@
 			}
 		},
 				{
-			"id": "straatnamen",
+			"id": "inrichtingselementpunt",
 			"type": "symbol",
 			"source": "brt_achtergrond_source",
-			"source-layer" : "straatnamen",
+			"source-layer" : "inrichtingselementpunt",
 			"maxzoom": 20,
-			"minzoom": 8,
-			"symbol-placement": "line",
+			"minzoom": 14 ,
+			"symbol-placement": "point",
 			"symbol-avoid-edges" : false,
-			"layout" :{
-				"text-field":"{wegnummer_n_weg}",
-				"text-font": ["Open Sans Regular"],
-				"text-size":10,
-				"text-max-width": 500,
-				"text-anchor": "center",
-				"text-line-height": 1.5,
-				"text-justify": "center",
-				"text-padding": 5,
-				"text-allow-overlap": false
+			"layout": {
+				"icon-size": 1,
+				"icon-image": "boom"
 			},
 			"paint": {
-				"text-opacity": 1,
-				"text-color": "#eee",
-				"text-halo-color": "#000",
-				"text-halo-width": 4,
-				"text-halo-blur":2
+				"icon-opacity": 1,
+				"icon-color": "#eee"
 			}
 		},
 		{
