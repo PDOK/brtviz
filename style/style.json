@@ -5,7 +5,7 @@
 	"sources": {
 		"brt_achtergrond_source": {
 			"type": "vector",
-			"url": "http://test.geodata.nationaalgeoregister.nl/vector-viewer/style/topojson.json"
+			"url": "http://test.geodata.nationaalgeoregister.nl/vector-viewer/style/tilejson.json"
 		} 
 	},	
 	"layers":[
