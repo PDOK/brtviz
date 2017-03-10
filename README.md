@@ -40,5 +40,29 @@ Ga naar `Open > Upload A New Style > Upload`
 Omdat in het JSON-bestand ook de verwijzing naar de Vector Tile service staat, pakt Maputnik dit op en toont de kaart.
 
 ## Cartografie
-
 Je kan met behulp van de interface en de JSON-interface de cartografische vormgeving van de kaart aanpassen.
+
+## Sprite
+For creating custom sprites : https://github.com/mapbox/spritezero-cli
+Spritezero reads an input directory containing SVG files and generates a JSON layout file and PNG spritesheet.
+
+#### Installation
+
+	npm install -g @mapbox/spritezero-cli
+
+#### Usage
+
+	spritezero [output filename] [input directory]
+
+	  --retina      shorthand for --ratio=2
+	  --ratio=[n]   pixel ratio
+	  --unique      map identical images to multiple names
+
+## Fonts
+For creating custom fonts : https://github.com/klokantech/osm2vectortiles-gl-styles
+
+	npm install -g fontnik
+	# unpack font release from https://github.com/mapbox/mapbox-studio-default-fonts/releases
+	mkdir -p "glyphs/Open Sans Regular"
+	build-glyphs open-sans/OpenSans-Regular.ttf "glyphs/Open Sans Regular"
+

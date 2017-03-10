@@ -1,0 +1,327 @@
+{
+	"version": 8,
+	"name": "brt_a",
+	"glyphs": "/font/{fontstack}/{range}.pbf",
+	"sources": {
+		"brt_achtergrond_source": {
+			"type": "vector",
+			"scheme": "tile",
+			"tiles": [
+				"http://localhost:8000/brt_achtergrond/{z}/{x}/{y}.pbf"
+			]
+		} 
+	},	
+	"layers":[
+		{
+			"id":  "background",
+			"type": "background",
+			"paint": {
+				"background-color":"#F0F0F0"
+			}
+		},
+		{
+			"id": "registratiefgebiedvlak",
+			"type": "fill",
+			"source": "brt_achtergrond_source",
+			"source-layer" : "registratiefgebiedvlak",
+			"maxzoom": 20,
+			"minzoom": 0,
+			"filter": ["==", "viscode", "18080"],
+			"paint": {
+				"fill-opacity": 1,
+				"fill-color":"#F0F0F0",
+				"fill-outline-color": "#F0F0F0",
+				"fill-outline-width": 3
+			}
+		},
+		{
+			"id": "registratiefgebiedvlak",
+			"type": "fill",
+			"source": "brt_achtergrond_source",
+			"source-layer" : "registratiefgebiedvlak",
+			"maxzoom": 20,
+			"minzoom": 0,
+			"filter": ["==", "viscode", "18081"],
+			"paint": {
+				"fill-opacity": 1,
+				"fill-color":"#CAE8ED",
+				"fill-outline-color": "#CAE8ED",
+				"fill-outline-width": 3
+			}
+		},
+		{
+			"id": "terreinvlak_leeg",
+			"type": "fill",
+			"source": "brt_achtergrond_source",
+			"source-layer" : "terreinvlak",
+			"maxzoom": 20,
+			"minzoom": 6,
+			"filter": ["in", "type_landgebruik", ""], 
+			"paint": {
+				"fill-opacity": 1,
+				"fill-color": "#E6EDE6",
+				"fill-outline-color": "#E6EDE6"
+			}
+		},
+		{
+			"id": "terreinvlak_bos",
+			"type": "fill",
+			"source": "brt_achtergrond_source",
+			"source-layer" : "terreinvlak",
+			"maxzoom": 20,
+			"minzoom": 6,
+			"filter": ["in", "type_landgebruik", "bos: grind", "bos: gemengd bos", "bos: loofbos", "bos: naaldbos"], 
+			"paint": {
+				"fill-opacity": 1,
+				"fill-color": "#E6EDE6",
+				"fill-outline-color": "#E6EDE6"
+			}
+		},
+		{
+			"id": "terreinvlak_steen",
+			"type": "fill",
+			"source": "brt_achtergrond_source",
+			"source-layer" : "terreinvlak",
+			"maxzoom": 20,
+			"minzoom": 8,
+			"filter": ["==", "type_landgebruik", "heide"], 
+			"paint": {
+				"fill-opacity": 1,
+				"fill-color": "#F0F0F0",
+				"fill-outline-color": "#F0F0F0"
+			}
+		},
+		{
+			"id": "terreinvlak_heide",
+			"type": "fill",
+			"source": "brt_achtergrond_source",
+			"source-layer" : "terreinvlak",
+			"maxzoom": 20,
+			"minzoom": 8,
+			"filter": ["==", "type_landgebruik", "heide"], 
+			"paint": {
+				"fill-opacity": 1,
+				"fill-color": "#FEF2F2",
+				"fill-outline-color": "#FEF2F2"
+			}
+		},
+		{
+			"id": "terreinvlak_zand",
+			"type": "fill",
+			"source": "brt_achtergrond_source",
+			"source-layer" : "terreinvlak",
+			"maxzoom": 20,
+			"minzoom": 8,
+			"filter": ["==", "type_landgebruik", "zand"], 
+			"paint": {
+				"fill-opacity": 1,
+				"fill-color": "#FEF8DC",
+				"fill-outline-color": "#FEF8DC"
+			}
+		},
+		{
+			"id": "Waterdeelvlak_alles",
+			"type": "fill",
+			"source": "brt_achtergrond_source",
+			"source-layer" : "waterdeelvlak",
+			"maxzoom": 20,
+			"minzoom": 0,
+			"paint": {
+				"fill-opacity": 1,
+				"fill-color": "#CAE8ED",
+				"fill-outline-color": "#CAE8ED"
+			}
+		},
+		{
+			"id": "Waterdeellijn",
+			"type": "line",
+			"source": "brt_achtergrond_source",
+			"source-layer" : "waterdeellijn",
+			"maxzoom": 20,
+			"minzoom": 8,
+			"line-cap": "round",
+			"line-join": "miter",
+			"line-miter-limit": 2, 
+			"paint": {
+				"line-opacity": 1,
+				"line-color": "#CAE8ED",
+				"line-width": 2
+			}
+		},
+		{
+			"id": "wegdeellijn_snelweg_achter",
+			"type": "line",
+			"source": "brt_achtergrond_source",
+			"source-layer" : "wegdeellijn",
+			"maxzoom": 10,
+			"minzoom": 7,
+			"line-cap": "butt",
+			"line-join": "miter",
+			"line-miter-limit": 2, 
+			"filter": ["==", "type_weg", "autosnelweg"], 
+			"paint": {
+				"line-opacity": 1,
+				"line-color": "#E1E1E1",
+				"line-width": 4
+			}
+		},
+		{
+			"id": "wegdeellijn_snelweg_voor",
+			"type": "line",
+			"source": "brt_achtergrond_source",
+			"source-layer" : "wegdeellijn",
+			"maxzoom": 10,
+			"minzoom": 7,
+			"line-cap": "butt",
+			"line-join": "miter",
+			"line-miter-limit": 2, 
+			"filter": ["==", "type_weg", "autosnelweg"], 
+			"paint": {
+				"line-opacity": 1,
+				"line-color": "#FFFFFF",
+				"line-width": 2
+			}
+		},
+		{
+			"id": "Wegdeellijn_mid",
+			"type": "line",
+			"source": "brt_achtergrond_source",
+			"source-layer" : "wegdeellijn",
+			"maxzoom": 20,
+			"minzoom": 8,
+			"line-cap": "butt",
+			"line-join": "miter",
+			"line-miter-limit": 2, 
+			"filter": ["in", "type_weg", "hoofdweg", "regionale weg" ], 
+			"paint": {
+				"line-opacity": 1,
+				"line-color": "#F0F0F0",
+				"line-width": 2
+			}
+		},
+		{
+			"id": "Wegdeellijn_lokaal",
+			"type": "line",
+			"source": "brt_achtergrond_source",
+			"source-layer" : "wegdeellijn",
+			"maxzoom": 20,
+			"minzoom": 9,
+			"line-cap": "butt",
+			"line-join": "miter",
+			"line-miter-limit": 2, 
+			"filter": ["in", "type_weg","lokale weg"], 
+			"paint": {
+				"line-opacity": 1,
+				"line-color": "#F0F0F0",
+				"line-width": 2
+			}
+		},
+		{
+			"id": "Wegdeellijn_klein_achter",
+			"type": "line",
+			"source": "brt_achtergrond_source",
+			"source-layer" : "wegdeellijn",
+			"maxzoom": 20,
+			"minzoom": 14,
+			"line-cap": "butt",
+			"line-join": "miter",
+			"line-miter-limit": 2, 
+			"filter": ["in", "type_weg", "straat", "overig", "veerverbinding"], 
+			"paint": {
+				"line-opacity": 1,
+				"line-color": "#E1E1E1",
+				"line-width": 1.5
+			}
+		},
+				{
+			"id": "Wegdeellijn_klein_voor",
+			"type": "line",
+			"source": "brt_achtergrond_source",
+			"source-layer" : "wegdeellijn",
+			"maxzoom": 20,
+			"minzoom": 14,
+			"line-cap": "butt",
+			"line-join": "miter",
+			"line-miter-limit": 2, 
+			"filter": ["in", "type_weg", "straat", "overig", "veerverbinding"], 
+			"paint": {
+				"line-opacity": 1,
+				"line-color": "#F0F0F0",
+				"line-width": 1
+			}
+		},
+		{
+			"id": "Gebouwvlak",
+			"type": "fill",
+			"source": "brt_achtergrond_source",
+			"source-layer" : "gebouwvlak",
+			"maxzoom": 20,
+			"minzoom": 12,
+			"paint": {
+				"fill-opacity": 1,
+				"fill-color": "#E6EDE6",
+				"fill-outline-color": "#E6EDE6"
+			}
+		},
+		{
+			"id": "spoorbaanlijn_achter",
+			"type": "line",
+			"source": "brt_achtergrond_source",
+			"source-layer" : "spoorbaanlijn",
+			"maxzoom": 20,
+			"minzoom": 12,
+			"line-cap": "round",
+			"line-join": "miter",
+			"line-miter-limit": 2, 
+			"paint": {
+				"line-opacity": 1,
+				"line-color": "#F0F0F0",
+				"line-width": 3
+			}
+		},
+		{
+			"id": "spoorbaanlijn_voor",
+			"type": "line",
+			"source": "brt_achtergrond_source",
+			"source-layer" : "spoorbaanlijn",
+			"maxzoom": 20,
+			"minzoom": 12,
+			"line-cap": "round",
+			"line-join": "miter",
+			"line-miter-limit": 2, 
+			"paint": {
+				"line-opacity": 1,
+				"line-color": "#F0F0F0",
+				"line-width": 1.5,
+				"line-dasharray": [10.0, 10.0]
+			}
+		},
+		{
+			"id": "straatnamen",
+			"type": "symbol",
+			"source": "brt_achtergrond_source",
+			"source-layer" : "wegdeellijn",
+			"maxzoom": 20,
+			"minzoom": 10,
+			"line-cap": "butt",
+			"line-join": "miter",
+			"line-miter-limit": 2, 
+			"symbol-placement": "line",
+			"symbol-spacing" : 2,
+			"symbol-avoid-edges" : true,
+			"text-field":"nederlandse_straatnaam",
+			"text-font": "Open Sans Regular",
+			"text-size":12,
+			"text-max-widht": 10,
+			"text-line-height": 1.5,
+			"paint": {
+				"text-opacity": 1,
+				"text-color": "rgb(0,0,0)",
+				"text-halo-color": "rgb(0,0,0)",
+				"text-halo-width": 2,
+				"text-halo-blur":2
+			}
+		}
+	]
+}
+
