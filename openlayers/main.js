@@ -6,7 +6,7 @@ var layer = new ol.layer.VectorTile({
 	        format: new ol.format.MVT(),
         	tileGrid: ol.tilegrid.createXYZ({maxZoom: 15}),
 	        tilePixelRatio: 16,
-        	url: 'http://localhost:8000/brt_achtergrond/{z}/{x}/{y}.pbf',
+        	url: 'http://test.geodata.nationaalgeoregister.nl/vector/brt_achtergrond/{z}/{x}/{y}.pbf',
           renderBuffer: 10
 	})  
 });
@@ -18,7 +18,7 @@ var labels = new ol.layer.VectorTile({
           format: new ol.format.MVT(),
           tileGrid: ol.tilegrid.createXYZ({maxZoom: 15}),
           tilePixelRatio: 16,
-          url: 'http://localhost:8000/brt_achtergrond/{z}/{x}/{y}.pbf',
+          url: 'http://test.geodata.nationaalgeoregister.nl/vector/brt_achtergrond/{z}/{x}/{y}.pbf',
           renderBuffer: 10
   }),
   style: text_style,
@@ -42,7 +42,7 @@ var randomStyle = [new ol.style.Style({
     })    
   ];
 
-var text_style =  fetch('http://localhost:8000/text_style.json').then(function(response) {
+var text_style =  fetch('/text_style.json').then(function(response) {
     response.json().then(function(glStyle) {
       olms.applyStyle(labels, glStyle, 'brt_achtergrond_source')
     });
@@ -56,14 +56,14 @@ function kleur_map(in_stijl){
   stopall();
   switch(in_stijl) {
     case "kleur":
-        var style_kleur = fetch('http://localhost:8000/style.json').then(function(response) {
+        var style_kleur = fetch('style.json').then(function(response) {
           response.json().then(function(glStyle) {
             olms.applyStyle(layer, glStyle, 'brt_achtergrond_source')
           });
         });
         break;
     case "grijs":
-        var style_grijs = fetch('http://localhost:8000/style_grijs.json').then(function(response) {
+        var style_grijs = fetch('style_grijs.json').then(function(response) {
           response.json().then(function(glStyle) {
             olms.applyStyle(layer, glStyle, 'brt_achtergrond_source')
           });
