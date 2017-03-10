@@ -5,7 +5,32 @@
 <link rel="stylesheet" href="https://openlayers.org/en/v4.0.1/css/ol.css">
 <link rel="stylesheet" href="main.css">
 <div id="map"></div>
+<div id='legend-pane'>
+<button class="knop" onclick="startall()">Start </button>
+<button class="knop" onclick="stopall()">Stop</button>
+<button class="knop" onclick="kleur_map('grijs')">Grijs</button>
+<button class="knop" onclick="kleur_map('kleur')">Kleur</button>
+</div>
+<div onclick="openNav()" id='info-button'  class="button hidden-button2" >
+			<a href="javascript:void(0)" >b</a> 
+</div>
+<div onclick="closeNav()" id="close-button" class="button"> 
+<a href="javascript:void(0)" o>&times</a>
+</div>
 <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
 <script src="https://openlayers.org/en/v4.0.1/build/ol.js"></script>
 <script src="olms.js"></script>
 <script src="main.js"></script>
+<script>
+	// click open/close button event
+	function openNav() {
+	    document.getElementById("legend-pane").className = "";
+	    document.querySelector("#close-button").className = "button";
+	    document.querySelector("#info-button").className = "button hidden-button2";
+	};
+	function closeNav() {
+	    document.getElementById("legend-pane").className = "hidden-legend";
+	    document.querySelector("#close-button").className = "button hidden-button2";
+	    document.querySelector("#info-button").className = "button";
+	};
+</script>
