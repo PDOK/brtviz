@@ -1,15 +1,12 @@
 {
 	"version": 8,
-	"name": "brt_a",
-	"glyphs": "http://localhost:8000/font/{fontstack}/{range}.pbf",
-	"sprite": "http://localhost:8000/sprite/boom",
+	"name": "brt-achtergrondkaart-teksten",
+	"glyphs": "http://test.geodata.nationaalgeoregister.nl/vector-viewer/style/font/{fontstack}/{range}.pbf",
+	"sprite": "http://test.geodata.nationaalgeoregister.nl/vector-viewer/style/sprite/boom",
 	"sources": {
 		"brt_achtergrond_source": {
 			"type": "vector",
-			"scheme": "tile",
-			"url": [
-				"http://localhost:8000/brt_achtergrond/{z}/{x}/{y}.pbf"
-			]
+			"url": "http://test.geodata.nationaalgeoregister.nl/vector-viewer/style/tilejson.json"
 		} 
 	},	
 	"layers":[
